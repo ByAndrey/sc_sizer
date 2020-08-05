@@ -50,7 +50,7 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-md text-center">Result: {{ result }} bytes / {{ '%0.2f'|  format(result/1024/1024|float) }} Gb</div>
+        <div class="col-md text-center">Result: {{ result }} bytes / {{ '%0.2f'|  format(result/1024/1024/1024|float) }} Gb</div>
     </div>
 </div>
 {% endblock %}
