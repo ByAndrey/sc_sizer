@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="container-fluid">
+    <form action="" method="GET">
+        <div class="row">
+        <div class="col-md text-right">Number of Storage Devices</div>
+        <div class="col-md text-left"><input type="number" value="1" name="num_stor" disabled></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Performance record size (default is 200)</div>
+            <div class="col-md text-left"><input type="number" value="{{ Rprs }}" name="Rprs"></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Number of volumes</div>
+            <div class="col-md text-left"><input type="number" value="{{ Vm }}" name="Vm"></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Collection rate. Number of performance samples in a hour.</div>
+            <div class="col-md text-left"><input type="number" value="{{ CR }}" name="CR"></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Retention period for sample data, in days</div>
+            <div class="col-md text-left"><input type="number" value="{{ Rs }}" name="Rs"></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Retention period for hourly summarization data, in days.</div>
+            <div class="col-md text-left"><input type="number" value="{{ Rh }}" name="Rh"></div>
+        </div>
+        <div class="row">
+            <div class="col-md text-right">Retention period for daily summarization data, in days.</div>
+            <div class="col-md text-left"><input type="number" value="{{ Rd }}" name="Rd"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md text-right">
+            <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+            <div class="col-md text-left">
+            <input class="btn btn-primary" type="reset" value="Reset">
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="row">
+        <div class="col-md text-center">Formula:</div>
+    </div>
+    <div class="row">
+        <div class="col-md text-center">(# bytes in DB for Storage Devices) = Rprs x (Vm x ((24 x CR x Rs) + (24 x Rh) + Rd))</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md text-center">Result: {{ result }} bytes / {{ '%0.2f'|  format(result/1024/1024|float) }} Gb</div>
+    </div>
+</div>
+{% endblock %}
